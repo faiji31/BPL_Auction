@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import PlayerImg from "../../assets/user1.png";
 import CounTry from "../../assets/Group.png";
+import { toast } from "react-toastify";
 
 const PlayerCard = ({ player, setAvilableBalence, AvilableBalence,myPlayers , setMyPlayers }) => {
   const [isSelected, setIsSelected] = useState(false);
   const handleSelected = (PlayerData) => {
     const PlayerPrice = parseInt(Number(PlayerData.price_usd_estimated.replace(/,/g, "")))
     if(AvilableBalence<PlayerPrice){
-        alert("You Don't have enough Balence")
+        toast("You Don't have enough Balence")
+    }
+    if(myPlayers.length>=6){
+        toast("You can Select Max 6 Players")
     }
     setIsSelected(true);
     setAvilableBalence(

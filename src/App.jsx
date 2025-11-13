@@ -1,6 +1,7 @@
 import { Suspense, useState } from 'react'
 import './App.css'
 
+ import { ToastContainer } from 'react-toastify';
 import NavBar from './components/NavBar/NavBar'
 import AvilablePlayers from './components/AvilablePlayers/AvilablePlayers'
 import SelectedPlayers from './components/SelectedPlayers/SelectedPlayers'
@@ -24,10 +25,10 @@ function App() {
      <NavBar AvilableBalence={AvilableBalence}></NavBar>
      <div className='bg-white'>
       <div className='max-w-[1200px] mx-auto  text-black py-10 flex justify-between items-center '>
-      <h1 className='font-semibold'>Avilable Player</h1>
+      <h1 className='font-semibold'>{toggle===true?"Avilable Players":`Selected Players (${myPlayers.length}/6)`}</h1>
       <div className='flex ' >
         <button onClick={()=>setToggle(true)} className={`py-3 px-4 border-1 border-gray-200 font-semibold rounded-l-2xl ${toggle===true?"bg-[#E7FE29]":""}`}>Avilable </button>
-        <button onClick={()=>setToggle(false)} className={`py-3 px-4 border-1 border-gray-200 font-semibold rounded-r-2xl ${toggle===false?"bg-[#E7FE29]":""}`}>Selected <span>(0)</span></button>
+        <button onClick={()=>setToggle(false)} className={`py-3 px-4 border-1 border-gray-200 font-semibold rounded-r-2xl ${toggle===false?"bg-[#E7FE29]":""}`}>Selected <span>({myPlayers.length})</span></button>
       </div>
      </div>
      </div>
@@ -42,7 +43,7 @@ function App() {
 
  
     
-    
+    <ToastContainer/>
     </>
   )
 }
