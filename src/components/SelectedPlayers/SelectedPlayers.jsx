@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
+import SelectedCard from "../SelectedCard/SelectedCard";
 
-const SelectedPlayers = () => {
-    return (
-        <div className='bg-white text-black'>
-            <div className='max-w-[1200px] mx-auto '>
-            <h1>Selected Players</h1>
-        </div>
-        </div>
-    );
+
+const SelectedPlayers = ({ myPlayers }) => {
+  return (
+    <div className="bg-white text-black">
+        {
+            myPlayers.map(player=><SelectedCard player={player}></SelectedCard>)
+            
+        }
+     
+    </div>
+  );
 };
 
 export default SelectedPlayers;

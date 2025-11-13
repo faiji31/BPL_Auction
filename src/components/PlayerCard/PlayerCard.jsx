@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PlayerImg from "../../assets/user1.png";
 import CounTry from "../../assets/Group.png";
 
-const PlayerCard = ({ player, setAvilableBalence, AvilableBalence }) => {
+const PlayerCard = ({ player, setAvilableBalence, AvilableBalence,myPlayers , setMyPlayers }) => {
   const [isSelected, setIsSelected] = useState(false);
   const handleSelected = (PlayerData) => {
     const PlayerPrice = parseInt(Number(PlayerData.price_usd_estimated.replace(/,/g, "")))
@@ -12,8 +12,11 @@ const PlayerCard = ({ player, setAvilableBalence, AvilableBalence }) => {
     setIsSelected(true);
     setAvilableBalence(
       AvilableBalence - PlayerPrice)
-    
+
+
+     setMyPlayers([...myPlayers,PlayerData]);
   };
+ 
 
   return (
     <div className="card   shadow-sm p-4">
