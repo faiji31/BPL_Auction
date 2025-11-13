@@ -11,15 +11,16 @@ const fetchPlayer = async()=>{
   const res = await fetch("https://raw.githubusercontent.com/faiji31/bottles-data/refs/heads/main/players.json")
    return res.json()
 }
-
+const PlayerPromise =  fetchPlayer()
 function App() {
   const [toggle,setToggle]=useState(true)
-const PlayerPromise =  fetchPlayer()
+  const [AvilableBalence,setAvilableBalence]=useState(60000000)
+
 
   return (
     <>
     
-     <NavBar></NavBar>
+     <NavBar AvilableBalence={AvilableBalence}></NavBar>
      <div className='bg-white'>
       <div className='max-w-[1200px] mx-auto  text-black py-10 flex justify-between items-center '>
       <h1 className='font-semibold'>Avilable Player</h1>
@@ -31,7 +32,7 @@ const PlayerPromise =  fetchPlayer()
      </div>
      {
       toggle === true ?<Suspense fallback={<span className="loading loading-spinner loading-xl"></span>}>
-      <AvilablePlayers PlayersPromise={PlayerPromise} ></AvilablePlayers>
+      <AvilablePlayers AvilableBalence={AvilableBalence} setAvilableBalence={setAvilableBalence}  PlayersPromise={PlayerPromise} ></AvilablePlayers>
      </Suspense> :  <SelectedPlayers></SelectedPlayers>
      }
      
