@@ -1,19 +1,26 @@
-
+import { Suspense } from 'react'
 import './App.css'
-import SelectedPlayers from './components/SelectedPlayers/SelectedPlayers'
+import NavBar from './components/NavBar/NavBar'
 import AvilablePlayers from './components/AvilablePlayers/AvilablePlayers'
 
-import NavBar from './NavBar/NavBar'
+
+
+const fetchPlayer = async()=>{
+  const res = await fetch("https://raw.githubusercontent.com/faiji31/bottles-data/refs/heads/main/players.json")
+   return res.json()
+}
 
 function App() {
-
+const PlayerPromise =  fetchPlayer()
 
   return (
     <>
     
      <NavBar></NavBar>
-     <AvilablePlayers></AvilablePlayers>
-     <SelectedPlayers></SelectedPlayers>
+     <Suspense fallback={<span className="loading loading-spinner loading-xl"></span>}>
+      <AvilablePlayers PlayersPromise={PlayerPromise} ></AvilablePlayers>
+     </Suspense>
+    
 
  
     

@@ -1,12 +1,12 @@
 import React from 'react';
-import NavImg from '../assets/logo.png'
-import CoinImg from '../assets/dollar.png'
+import NavImg from '../../assets/logo.png'
+import CoinImg from '../../assets/dollar.png'
 
 const NavBar = () => {
     return (
-         <div className="min-h-screen bg-white ">
+         <div className=" bg-white " id='body'>
 
-      <div className="navbar w-[1200px] mx-auto  shadow-sm bg-white">
+      <div className="navbar max-w-[1200px] mx-auto  shadow-sm bg-white">
   <div className="flex-1">
     <a className=" text-xl text-black"><img className='w-[60px] h-[60px]' src={NavImg} alt="" /></a>
   </div>
@@ -21,9 +21,6 @@ const NavBar = () => {
       <span>60000000000</span>
       <img src={CoinImg} alt="" />
      </div>
-
-
-
     </ul>
     
   </div>
