@@ -14,7 +14,7 @@ const fetchPlayer = async()=>{
 const PlayerPromise =  fetchPlayer()
 function App() {
   const [toggle,setToggle]=useState(true)
-  const [AvilableBalence,setAvilableBalence]=useState(60000000)
+  const [AvilableBalence,setAvilableBalence]=useState(6000000)
 
 
   return (

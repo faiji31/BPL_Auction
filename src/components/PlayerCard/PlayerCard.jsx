@@ -4,6 +4,16 @@ import CounTry from "../../assets/Group.png";
 
 const PlayerCard = ({ player, setAvilableBalence, AvilableBalence }) => {
   const [isSelected, setIsSelected] = useState(false);
+  const handleSelected = (PlayerData) => {
+    const PlayerPrice = parseInt(Number(PlayerData.price_usd_estimated.replace(/,/g, "")))
+    if(AvilableBalence<PlayerPrice){
+        alert("You Don't have enough Balence")
+    }
+    setIsSelected(true);
+    setAvilableBalence(
+      AvilableBalence - PlayerPrice)
+    
+  };
 
   return (
     <div className="card   shadow-sm p-4">
@@ -34,17 +44,7 @@ const PlayerCard = ({ player, setAvilableBalence, AvilableBalence }) => {
         <h3>Right-Handed-Batsman</h3>
         <div className="flex justify-between items-center">
           <h3 className="font-bold">Price:{player.price_usd_estimated}</h3>
-          <button
-            disabled={isSelected}
-            onClick={() => {
-              setIsSelected(true);
-              setAvilableBalence(
-                AvilableBalence -
-                  Number(player.price_usd_estimated.replace(/,/g, ""))
-              );
-            }}
-            className="btn"
-          >
+          <button disabled={isSelected} onClick={() => {handleSelected(player)}} className="btn">
             {isSelected === true ? "Selected" : "Choose Player"}
           </button>
         </div>
