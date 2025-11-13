@@ -7,7 +7,7 @@ const AvilablePlayers = ({PlayersPromise}) => {
     console.log(PlayerData);
     return ( 
        <div className='bg-white text-black min-h-screen mb-5 '>
-         <div className=' mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-3'>
+         <div className=' mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-3 gap-4'>
             {
                 PlayerData.map(player=>         <div className="card   shadow-sm p-4">
   <figure>
